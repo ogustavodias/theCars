@@ -6,10 +6,17 @@
   <form>
     <div class="inputBox">
       <label for="carName">Nome do carro: </label>
-      <input type="text" name="carName" id="carName" [(ngModel)]="carNameInInput" />
+      <input
+        type="text"
+        name="carName"
+        id="carName"
+        [(ngModel)]="carNameInInput"
+      />
     </div>
     <div class="options">
-      <button class="saveButton" type="button" (click)="save()">Salvar</button>
+      <button class="saveButton" type="button" (click)="saveCar()">
+        Salvar
+      </button>
       <button class="cancelButton" (click)="closeModal()" type="button">
         Cancelar
       </button>

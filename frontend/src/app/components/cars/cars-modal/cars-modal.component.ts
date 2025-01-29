@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import {
   Component,
   EventEmitter,
+  inject,
   Input,
   OnChanges,
   Output,
@@ -9,6 +10,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Car } from '../../../models/car/car';
+import { CarService } from '../../../services/car.service';
 
 @Component({
   selector: 'app-cars-modal',
@@ -20,7 +22,9 @@ export class CarsModalComponent implements OnChanges {
   isOpen = false;
   @Input() carInEditing!: Car | null;
   @Output() carInEditingReset = new EventEmitter<void>();
+  @Output() refreshList = new EventEmitter<void>();
   carNameInInput = '';
+  carService = inject(CarService);
 
   ngOnChanges(changes: SimpleChanges): void {
     let carEdit = changes['carInEditing'];
@@ -29,12 +33,25 @@ export class CarsModalComponent implements OnChanges {
     }
   }
 
-  save() {
-    console.log(`Salvando o carro ${this.carNameInInput}`);
-  }
+  saveCar() {
+    let carToSave: Car = {
+      id: this.carInEditing?.id,
+      name: this.carNameInInput,
+    };
 
-  delete(car: Car) {
-    console.log(`Deletando o carro ${car.name}`);
+    let operation = carToSave.id
+      ? this.carService.editCar(carToSave)
+      : this.carService.saveCar(carToSave);
+
+    operation.subscribe({
+      next: () => {
+        this.refreshList.emit();
+        this.closeModal();
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
 
   openModal() {
@@ -43,6 +60,7 @@ export class CarsModalComponent implements OnChanges {
 
   closeModal() {
     this.isOpen = false;
+    this.carNameInInput = '';
     this.carInEditingReset.emit();
   }
 

@@ -25,12 +25,20 @@
         <td>{{ car.id }}</td>
         <td>{{ car.name }}</td>
         <td>
-          <button class="editButton" type="button" (click)="edit(car)">editar</button>
-          <button class="deleteButton" type="button" (click)="modal.delete(car)" >deletar</button>
+          <button class="editButton" type="button" (click)="edit(car)">
+            editar
+          </button>
+          <button class="deleteButton" type="button" (click)="deleteCar(car)">
+            deletar
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<app-cars-modal [carInEditing]="carInEditing" (carInEditingReset)="resetCarInEditing()"/>
+<app-cars-modal
+  [carInEditing]="carInEditing"
+  (carInEditingReset)="resetCarInEditing()"
+  (refreshList)="getAllCars()"
+/>

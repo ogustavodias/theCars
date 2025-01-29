@@ -1,4 +1,4 @@
 export class Car {
-  id!: number;
+  id?: number;
   name!: string;
 }
