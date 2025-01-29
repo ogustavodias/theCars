@@ -1,0 +1,18 @@
+<div
+  class="container"
+  [ngClass]="{ show: isOpen }"
+  (click)="checkOutsideClick($event)"
+>
+  <form>
+    <div class="inputBox">
+      <label for="carName">Nome do carro: </label>
+      <input type="text" name="carName" id="carName" [(ngModel)]="carNameInInput" />
+    </div>
+    <div class="options">
+      <button class="saveButton" type="button" (click)="save()">Salvar</button>
+      <button class="cancelButton" (click)="closeModal()" type="button">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

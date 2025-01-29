@@ -1,0 +1,60 @@
+header {
+  background-color: blue;
+  color: #fff;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .linkList {
+    display: flex;
+    gap: 10px;
+
+    a {
+      cursor: pointer;
+
+      transition: opacity 0.3s;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+table {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  width: 100%;
+  text-align: center;
+
+  thead th {
+    padding-bottom: 20px;
+    text-transform: capitalize;
+  }
+
+  tbody td {
+    padding: 5px 0;
+
+    &:last-child {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+
+  button {
+    color: #fff;
+  }
+
+  .editButton {
+    background-color: orange;
+  }
+
+  .deleteButton {
+    background-color: red;
+  }
+}

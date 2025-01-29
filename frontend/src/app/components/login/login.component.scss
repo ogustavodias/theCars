@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  h1 {
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  .loginForm {
+    max-width: 500px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 10px 10px 10px rgba($color: #000000, $alpha: 0.1);
+
+    button {
+      background-color: blue;
+      color: #fff;
+    }
+  }
+}

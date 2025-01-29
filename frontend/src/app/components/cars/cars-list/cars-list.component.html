@@ -1,0 +1,36 @@
+<header>
+  <div class="container">
+    <h1>SISTEMA</h1>
+    <nav>
+      <ul class="linkList">
+        <li><a>Lista</a></li>
+        <li (click)="modal.openModal()"><a>Novo</a></li>
+        <li><a [routerLink]="['/login']">Sair</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>nome</th>
+        <th>ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of carList">
+        <td>{{ car.id }}</td>
+        <td>{{ car.name }}</td>
+        <td>
+          <button class="editButton" type="button" (click)="edit(car)">editar</button>
+          <button class="deleteButton" type="button" (click)="modal.delete(car)" >deletar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-cars-modal [carInEditing]="carInEditing" (carInEditingReset)="resetCarInEditing()"/>
